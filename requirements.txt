@@ -1,0 +1,4 @@
+psutil
+pyTelegramBotAPI
+os-sys
+urllib3
