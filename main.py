@@ -3,9 +3,9 @@ from telebot import *
 import platform
 import psutil
 import webbrowser
-import pyautogui
+import urllib.request
 
-API_TOKEN = ''
+API_TOKEN = 'token'
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -32,8 +32,7 @@ def bot_message(message):
             item4 = types.KeyboardButton('сон')
             item5 = types.KeyboardButton('инфо')
             item6 = types.KeyboardButton('нагрузка')
-            item7 = types.KeyboardButton('скриншот')
-            markup.add(item1, item2, item3, item4, item5, item6, item7)
+            markup.add(item1, item2, item3, item4, item5, item6)
             bot.send_message(message.chat.id, 'ПК 💻', reply_markup=markup)
         elif message.text == 'Назад ⬅':
 
@@ -117,14 +116,6 @@ def bot_message(message):
             markup.add(item1, item2)
             os.system('"C:/Windows/System32/notepad.exe"')
             bot.send_message(message.chat.id, 'Открываю exe', reply_markup=markup)
-        elif message.text == 'скриншот':
-            markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-            item1 = types.KeyboardButton('ПК 💻')
-            item2 = types.KeyboardButton('открыть')
-            markup.add(item1, item2)
-            im2 = pyautogui.screenshot('s.png')
-            bot.send_photo(message.chat.id, photo=open('s.png', 'rb'))
-            bot.send_message(message.chat.id, 'Скриншот', reply_markup=markup)
 
 
 bot.infinity_polling()
