@@ -2,3 +2,5 @@ psutil
 pyTelegramBotAPI
 os-sys
 urllib3
+PyAutoGUI
+keyboard
