@@ -7,7 +7,7 @@ import pyautogui
 import keyboard
 
 API_TOKEN = ''
-
+user_id=''#при запуске он говорить твой id
 bot = telebot.TeleBot(API_TOKEN)
 
 
@@ -23,13 +23,13 @@ def send_welcome(message):
     item3 = types.KeyboardButton('мультимедия')
     item4 = types.KeyboardButton('отключить код')
     markup.add(item1, item2, item3, item4)
-    bot.send_message(message.chat.id, '👋', reply_markup=markup)
+    bot.send_message(message.chat.id, message.from_user.id, reply_markup=markup)
 
 @bot.message_handler(content_types=['text'])
 
 def bot_message(message):
     if message.chat.type == 'private':
-        if message.from_user.id == 1387963244:
+        if message.from_user.id == user_id:
             if message.text == 'ПК 💻':
 
                 markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
